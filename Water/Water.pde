@@ -1,3 +1,7 @@
+// KOHEJ ÄNDRADE LITE
+// Kohejs version kommer upp!
+// testar igen!
+
 final int I = 4;
 final int  J = 4;
 color c;
