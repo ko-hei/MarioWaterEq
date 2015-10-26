@@ -4,6 +4,7 @@ final int  J = 4;
 color c;
 final int MAP_WIDTH = 16;
 // Ja ba skoja
+//HIHI
 final int MAP_HEIGHT= 16;
 int block_width, block_height;
 
