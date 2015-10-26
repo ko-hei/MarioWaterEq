@@ -3,11 +3,13 @@ final int MAP_HEIGHT= 16;
 
 final float CORNER = 0; 
 
+final int AIR = 0;
+final int GROUND = 1;
+
 // Tools to make the simulation more handy!
 boolean grid = false;  // grid-variable 
 
-
-int [][] blocks = new int[MAP_WIDTH+2][MAP_HEIGHT+2];  // Any reason why we should add 2?
+int [][] blocks = new int[MAP_WIDTH][MAP_HEIGHT];  // Any reason why we should add 2?
 
 int block_width, block_height;
 //Color definition
@@ -35,9 +37,9 @@ void setup(){
 }
 
 void draw_rect(int x, int y, color c, float filled, float corner){
-  float screen_x = screen_x( x - 0 );
-  float screen_y = screen_y( y - -1 );
-  float block_y = screen_y(y-1+filled);
+  float screen_x = screen_x( x -0);
+  float screen_y = screen_y( y +1);
+  float block_y = screen_y( y - 0);
   
   fill(c);
   
@@ -70,28 +72,6 @@ void initmap(){
 //}
 
 }
-
-
-//
-
-//void initmap(){
-//  for ( int x = 0; x < MAP_HEIGHT + 2; x++ ){
-//    for ( int y = 0; y < MAP_HEIGHT + 2; y++ ){
-//      blocks[x][y] = int(random(0, 2));
-//    }  
-//  } 
-  
-// for (int x =0; x < MAP_WIDTH+2; x++){
-//    blocks[x][0] = AIR;
-//    blocks[x][MAP_HEIGHT+1] = AIR;
-//  }
-  
-//  for (int y = 1; y < MAP_HEIGHT+1; y++){
-//    blocks[0][y] = AIR;
-//    blocks[MAP_WIDTH+1][y] = AIR;
-//  }
-
-//}
 
 void draw(){
   background(255);
