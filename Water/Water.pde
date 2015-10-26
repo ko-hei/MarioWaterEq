@@ -1,6 +1,3 @@
-// KOHEJ ÄNDRAR
-
-
 final int I = 4;
 final int  J = 4;
 color c;
