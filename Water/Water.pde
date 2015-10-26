@@ -1,12 +1,3 @@
-// Constant I and J for the iteration step to write the rectangles
-final int I = 16;
-final int  J = 16;
-
-final int A = 50;
-
-final int AIR = 0;
-final int GROUND = 1;
-
 final int MAP_WIDTH = 16;
 final int MAP_HEIGHT= 16;
 
