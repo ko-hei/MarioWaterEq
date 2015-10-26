@@ -1,3 +1,19 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Water extends PApplet {
+
 /*
  * MarioWaterEquation with Cellular automata
  * Class SW101 - Simulating with KojSyd
@@ -25,16 +41,16 @@ final int WATER = 2;
 int[][] cells = new int[map_width][map_height];			//	contains state information
 
 //	initialization
-void setup()
+public void setup()
 {
-  size(600,600, P2D);
+  
     cell_width = width/map_width;			//	Sets blocks width depending on window and grid size
   cell_height = height/map_height;		//	Sets blocks height depending on window and grid size
   initMap();								//	Draw Random map
 }	
 
 //	Draws everything on the screen
-void draw()
+public void draw()
 {
   background(245);						//	Sets the background color of the window
   simulation();							//	Runs the simulation before drawing
@@ -56,27 +72,27 @@ void draw()
 }
 
 //	code for drawing the blocks
-void drawCell(int x, int y, color c)
+public void drawCell(int x, int y, int c)
 {
   fill(c);
   rect(convertX(x), convertY(y), cell_width, cell_height);
 }
 
 // sets correct x coordinate which depends on block size
-int convertX(int x)
+public int convertX(int x)
 {
   return x*cell_width;
 }
 // sets correct y coordinate which depends on block size
-int convertY(int y)
+public int convertY(int y)
 {
   return y*cell_height;
 }
 
 //	defines block color; 0=AIR, 1=MUD, 2=WATER
-color cellColor(int c)
+public int cellColor(int c)
 {
-  color[] cellColors = {color(255, 255, 255), color(77, 77, 77), color(21, 24, 117)};	
+  int[] cellColors = {color(255, 255, 255), color(77, 77, 77), color(21, 24, 117)};	
   return cellColors[c];
 }			
 
@@ -103,7 +119,7 @@ color cellColor(int c)
  *
  */
 
-void simulation()
+public void simulation()
 {
   float remainingMass;	//	Need to keep track of the mass in the current Cell
 
@@ -118,7 +134,7 @@ void simulation()
 }
 
 //	Check cell below current cell
-void below(int x, int y)
+public void below(int x, int y)
 {
   if (cells[x][y+1] != MUD)	//	If below currentCell != MUD
   {
@@ -128,14 +144,24 @@ void below(int x, int y)
   }
 }
 
-void initMap()
+public void initMap()
 {
   //	Goes through entire grid
   for ( int x = 0; x < map_height; ++x )	
   {
     for ( int y = 0; y < map_height; ++y )
     {
-      cells[x][1] = int(random(0, 3));		//	Set random states
+      cells[x][1] = PApplet.parseInt(random(0, 3));		//	Set random states
+    }
+  }
+}
+  public void settings() {  size(600,600, P2D); }
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Water" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
     }
   }
 }
