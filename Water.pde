@@ -2,7 +2,7 @@
 final int I = 4;
 final int  J = 4;
 color c;
-
+// SYDNEYYYY
 final int MAP_WIDTH = 16;
 final int MAP_HEIGHT= 16;
 int block_width, block_height;
