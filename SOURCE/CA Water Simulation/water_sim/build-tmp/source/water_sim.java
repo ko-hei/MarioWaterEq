@@ -41,8 +41,8 @@ final float
 final float MinFlow = 0.01f;
 
 //Define map dimensions and data structures
-final int map_width = 128;   
-final int map_height = 128;
+final int map_width = 25;   
+final int map_height = 25;
 
 int[][] blocks = new int[map_width+2][map_height+2];
 

@@ -2,21 +2,43 @@
 	Will controll the simulation and other stuff. It will manipulate the data. 
 */
 
+void mousePressed()
+{
+  if(mouseButton == LEFT)
+  {
+    blocks[xToBlock(mouseX)][yToBlock(mouseY)] = 1;
+  }
+  else if(mouseButton == RIGHT)
+  {
+    blocks[xToBlock(mouseX)][yToBlock(mouseY)] = 2;
+  }
+}
 
-// sets correct x coordinate which depends on block size
+// converts matrix pos to pixel pos. (depends on block size)
 int convertX(int x)
 {
-  return x*cell_width;
+  return x*block_width;
 }
-// sets correct y coordinate which depends on block size
+
 int convertY(int y)
 {
-  return y*cell_height;
+  return y*block_height;
 }
+
+int xToBlock(int x)
+{
+  return x/(block_width);
+}
+
+int yToBlock(int y)
+{
+  return y/(block_height); 
+}
+
 
 void simulation()
 {
-  float remainingMass;	//	Need to keep track of the mass in the current Cell
+  float remainingMass;	//	Need to keep track of the mass in the current block
 
   //	Goes through grid-1
   for ( int x = 1; x < map_height-1; ++x )	
@@ -28,14 +50,14 @@ void simulation()
   }
 }
 
-//	Check cell below current cell
+//	Check block below current block
 void below(int x, int y)
 {
-  if (cells[x][y+1] != STONE)	//	If below currentCell != STONE
+  if (blocks[x][y+1] != STONE)	//	If below currentblock != STONE
   {
-    cells[x][y+1] = cells[x][y];
-    //drawCell(x, y+1, cellColor(cells[x][y]));
-    //drawCell(5, 5, cellColor(WATER));
+    blocks[x][y+1] = blocks[x][y];
+    //drawblock(x, y+1, blockColor(blocks[x][y]));
+    //drawblock(5, 5, blockColor(WATER));
   }
 }
 
@@ -46,7 +68,7 @@ void initMap()
   {
     for ( int y = 0; y < map_height; ++y )
     {
-      cells[x][y] = int(random(0, 2));		//	Set random states
+      blocks[x][y] = int(random(0, 2));		//	Set random states
     }
   }
 }
