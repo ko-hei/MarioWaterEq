@@ -14,6 +14,11 @@ void mousePressed()
   }
 }
 
+void update()
+{
+  simulation();
+}
+
 // converts matrix pos to pixel pos. (depends on block size)
 int convertX(int x)
 {

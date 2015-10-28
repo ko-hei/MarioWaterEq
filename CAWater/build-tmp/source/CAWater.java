@@ -19,7 +19,6 @@ public class CAWater extends PApplet {
 */
 
 // UI stuff
-
 int hoverLight = color(180, 250, 180, 200);
 
 //	Grid and block sizes
@@ -65,6 +64,11 @@ public void mousePressed()
   {
     blocks[xToBlock(mouseX)][yToBlock(mouseY)] = 2;
   }
+}
+
+public void update()
+{
+  simulation();
 }
 
 // converts matrix pos to pixel pos. (depends on block size)
@@ -136,6 +140,7 @@ public void initMap()
 public void draw()
 {
   background(245);						//	Sets the background color of the window
+  simulation();
   //	Drawing all the blocks - goes through entire grid
   for ( int x = 0; x < map_height; ++x )  
   {
@@ -165,12 +170,6 @@ public void drawblock(int x, int y, int c)
   rect(convertX(x), convertY(y), block_width, block_height);
 }
 
-
-public void hover(int x, int y, int rgb)
-{
-  //noStroke();
-  drawblock( xToBlock(x) , yToBlock(y), hoverLight);
-}
 
 
 

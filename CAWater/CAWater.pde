@@ -3,7 +3,6 @@
 */
 
 // UI stuff
-
 color hoverLight = color(180, 250, 180, 200);
 
 //	Grid and block sizes

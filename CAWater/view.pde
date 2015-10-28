@@ -36,12 +36,6 @@ void drawblock(int x, int y, color c)
 }
 
 
-void hover(int x, int y, color rgb)
-{
-  //noStroke();
-  drawblock( xToBlock(x) , yToBlock(y), hoverLight);
-}
-
 
 
 
